@@ -1,30 +1,28 @@
 comandos:
 ---------
 
-* vagrant plugin install vagrant-vbguest (opcional)
-
-* Inicializar la maquina virtual.
+* started the virtual machine.
 
 ~~~
 	$ vagrant up
 ~~~
 
-* Comprovar conexión SSH.
+* verify ssh conectivity.
 
 ~~~
 	$ vagrant ssh
 	$ ssh vagrant@192.168.33.100 (opcional*)
 ~~~
 
-* Instalaremos docker en la maquina virtual creada con vagrant y crearemos un enlace entre nuestro host y la maquina virtual, esto permitira ejecutar comandos de docker desde nuestro host.
+* create a docker-machine and install docker engine into virtual machine.
 
-> Para esto utilizaremos el driver generico de la herramienta docker-machine.
+> this is posible using the generic driver from docker-machine.
 
 ~~~
 	$ docker-machine create -d generic --generic-ssh-user vagrant --generic-ssh-key config/insecure_private_key --generic-ip-address 192.168.33.100 --engine-install-url "https://get.docker.com" LocalEnvironment
 ~~~
 
-> Ejemplo de mensaje de salida:
+> output example:
 
 ~~~
 	ll-url "https://get.docker.com" LocalEnvironment
@@ -38,39 +36,40 @@ comandos:
 	Provisioning with centos...
 ~~~
 
-* Verificamos que se creo la docker-machine
+* verify that docker-machine exists
 
 ~~~
 	$ docker-machine ls
 ~~~
 
-* Configuramos las variables de entorno para conectarnos a la docker-machine creada.
+* setting the environment variables for docker-machine.
 
 ~~~
 	$ eval $(docker-machine env LocalEnvironment)
 ~~~
 
-* Verificamos si docker esta instalado en la maquina virtual
+* verify that docker engine is installed
 
 ~~~
 	$ docker info
 ~~~
 
-* Para fines practicos, se tiene un archivo de tareas (docker-compose.yml)
+* creating a service http container for testing
 
-> Con esto crearemos un contenedor que servira un servicio httpd, donde mostraremos el archivo index.html ubicado en nuestra carpeta " public/ "
+> this service uses the index.html file into path public/
 
 ~~~
 	$ docker-compose build
 	$ docker-compose up
 ~~~
 
-* probamos en el browser
+* go to the browser
 
 ~~~
-	192.168.33.100:8080
+	http://192.168.33.100
 ~~~
 
-NOTA
+NOTE
 ====
-La carpeta public/ esta sincronizada con la maqiuna creada en vagrant, por lo cual todos los cambios que hagamos dentro de ella se veran reflejados en nuestro servicio httpd.
+
+The folder public / is synchronized with the machine set up in vagrant, so any changes you make in it will be reflected in our httpd service.
