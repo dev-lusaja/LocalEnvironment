@@ -1,0 +1,10 @@
+app:
+  container_name: BaseApplication
+  labels:
+    - "pe-baseapplication-description=base application for FrontEnd projects"
+    - "pe-baseapplication-version=1"
+  build: .
+  ports:
+    - "80:80"
+  volumes:
+    - /vagrant_data/public:/usr/local/apache2/htdocs/
