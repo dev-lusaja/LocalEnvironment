@@ -1,4 +1,4 @@
-comandos:
+commands:
 ---------
 
 * started the virtual machine.
