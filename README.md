@@ -10,7 +10,7 @@ commands:
 * download the vagrantbox
 
 ~~~
- $ vagrant box add Centos7 https://github.com/CommanderK5/packer-centos-template/releases/download/0.7.1/vagrant-centos-7.1.box
+ 	$ vagrant box add Centos7 https://github.com/CommanderK5/packer-centos-template/releases/download/0.7.1/vagrant-centos-7.1.box
 ~~~
 
 * started the virtual machine.
@@ -76,6 +76,8 @@ commands:
 ~~~
 
 * go to the browser
+
+Note: the IP is referential, there you must put the ip that was assigned to your virtual machine.
 
 ~~~
 	http://192.168.33.100
