@@ -1,3 +1,9 @@
+requirements:
+-------------
+
+* vagrant
+* docker-tools (docker - machine - compose)
+
 commands:
 ---------
 
